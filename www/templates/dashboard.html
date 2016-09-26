@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="bookStore">
+    <head>
+        <meta charset="UTF-8">
+	    <title>Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    </head>
+<!-- Body -->
+    <body ng-controller="bookStoreController as store" >
+        <!-- TitleBar -->
+
+            <h1 class="center-block thumbnail">Dashboard</h1>        
+        
+        <!-- TitleBar End -->
+        <nav>
+        </nav>
+        <aside class="thumbnail pull-left">      
+            <div class="list-group">
+                <a class="list-group-item active"> Dashboard </a>
+                <a href="#" class="list-group-item" ui-sref="goPedidos"> Mis pedidos <span class="badge"></span></a>
+                <a href="#" class="list-group-item" ui-sref="goFavoritos" disable> Mis favoritos <span class="badge"></span></a>
+                <a href="#" class="list-group-item" ui-sref="goDatos"> Mis datos <span class="badge"></span></a>
+                <a href="#" class="list-group-item" ui-sref="goIndex"> Salir </a>
+            </div>
+        </aside>
+        <section class="text-center" ui-view >
+            <div>
+                <a href="#" class="btn btn-default" ui-sref="goPedidos"> Mis pedidos </a> 
+                <a href="#" class="btn btn-default" ui-sref="goFavoritos" disable> Mis favoritos </a>
+                <a href="#" class="btn btn-default" ui-sref="goDatos"> Mis datos </a> 
+            </div>
+           
+        </section>
+        <script src="js/angular-ui-router.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script src="js/angular-ui-router.js"></script>                                                                     
+    </body>
+<!-- Body End -->
+</html>

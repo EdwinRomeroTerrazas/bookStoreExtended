@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="bockStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  </head>
+    
+  <body ng-controller="BockStoreController as store">
+    <!-- TitleBar -->
+        <h1 class="center-block thumbnail">Mis Pedidos</h1>
+        <!-- TitleBar End -->
+        <nav>
+        </nav>
+     
+    <aside class="thumbnail pull-left" >      
+            <div class="list-group">
+                <a class="list-group-item" ui-sref="goDashboard">Dashboard</a>
+                <a href="#" class="list-group-item active" ui-sref="goPedidos"> Mis pedidos <span class="badge"></span></a>
+                <a href="#" class="list-group-item  disabled" ui-sref="goFavoritos"> Mis favoritos <span class="badge"></span></a>
+                <a href="#" class="list-group-item " ui-sref="goDatos"> Mis datos <span class="badge"></span></a>
+                <a href="#" class="list-group-item" ui-sref="goIndex"> Salir </a>
+            </div>
+        </aside> 
+      
+    <section class="col-xs-10" >
+        <table class="table table-hover pull-right col-xs-8">
+            <tr>
+                <th>Fecha</th>
+                <th>Número</th> 
+                <th>Resumen</th>
+                <th>Estado</th>
+                <th>Total</th>
+            </tr>
+            <tr ng-repeat="pedido in store.usuario.pedidos">
+                <td>{{pedido.fecha}}</td>
+                <td><a ui-sref="detalle({id:pedido.id})">{{pedido.id}}</a></td> 
+                <td>{{pedido.resumen}}</td>
+                <td>{{pedido.estado}}</td> 
+                <td>{{pedido.total}}</td>
+            </tr>
+        </table>
+    </section>
+      <section ng-controller="detalleController" class="pull-left ">
+        <div  name="Left-side" class="thumbnail col-xs-6">
+          <div name="Titulo" class="col-xs-10 ">
+              <h1>Pedido #{{pedidos.id}}</h1>
+          </div>
+          <div name="fecha" class="col-xs-10 ">
+            <h5>Fecha:</h5>
+              <h4>{{pedidos.fecha}}</h4>
+          </div>
+          <div name="id" class="col-xs-10">
+           <h5>ID:</h5>
+              <h4>{{pedidos.id}}</h4>
+          </div>
+          <div name="usuario" class="col-xs-10">
+            <h5>Usuario:</h5>
+              <h4>{{pedidos.usuario}}</h4>
+          </div>
+          <div name="direccion" class="col-xs-10">
+            <h5>Dirección:</h5>
+              <h4>{{pedidos.direccion}}</h4>
+          </div>
+        </div>    
+        <div name="Right-side" class="col-xs-6 thumbnail" >
+             <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-xs-3">Libro</th>
+                        <th class="col-xs-5"></th>
+                        <th class="col-xs-3">Cantidad</th>
+                        <th class="col-xs-3">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img ng-src="{{pedidos.resumen[4].img}}"/></td>
+                        <td><h4>{{pedidos.resumen[0].titulo}}</h4></td>
+                        <td>{{pedidos.resumen[5].cantidad}} X {{pedidos.resumen[3].precio | currency}}</td>
+                        <td>{{pedidos.resumen[6].total | currency}}</td>
+                    </tr>
+                        <td></td><td></td><td></td><td></td>
+                    <tr>  
+                        <td></td><td></td>
+                        <td><h4>{{pedidos.estado}}</h4></td>
+                        <td><h4>{{pedidos.total | currency}}<h4></td></tr>
+                </tbody>
+            </table>
+        </div>  
+      </section>
+  </body>
+</html>

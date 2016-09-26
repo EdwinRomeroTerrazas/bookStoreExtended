@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="bookStore">
+    <head>
+        <meta charset="UTF-8">
+	    <title>Awesome BookStore</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    </head>
+<!-- Body -->
+    <body ng-controller="bookStoreController as store" ui-view>
+        <!-- TitleBar -->
+        <div class="thumbnail">
+             <button class="btn btn-primary pull-right col-xs-2" ui-sref="goDashboard">My Account</button>
+            <h1>Awesome BookStore!</h1> 
+        </div>
+        <!-- TitleBar End -->
+        <!-- FiltersBar -->
+        <div class="thumbnail">
+            <label>Search:</label>
+            <input class="form-control" placeholder="by anything" type="text" ng-model="searchBooks">
+            <label>Order by: </label>
+            <select class="form-control" ng-model="orderBooks">
+                <option value="title">Title</option>
+                <option value="editorial">Editorial</option>
+                <option value="author">Author</option>
+            </select>
+        </div>
+        <!-- FiltersBar End -->
+        <div ng-repeat="product in store.products | filter:searchBooks | orderBy:orderBooks">
+            <ul>
+                <li class="pull-left thumbnail ">
+                    <img class="pull-left thumbnail" ng-src="{{product.images[0].url}}">
+                    <h1 clas="lead">{{product.title}}</h1>
+                    <h3>{{product.author}}</h3> 
+                    <h4>{{product.editorial}}</h4> 
+                    <p class="text-justify lead">{{product.description}}</p> 
+                 </li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script src="js/angular-ui-router.js"></script>   
+        <script src="js/detalles.js"></script>
+            
+    </body>
+<!-- Body End -->
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="bookStore">
+    <head>
+        <meta charset="UTF-8">
+	    <title>Mis Datos</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    </head>
+<!-- Body -->
+    <body ng-controller="bookStoreController as store">
+        <!-- TitleBar -->
+        <h1 class="center-block thumbnail">Mis Datos</h1>
+        <!-- TitleBar End -->
+        <nav>
+        </nav>
+        <aside class="thumbnail pull-left" >      
+            <div class="list-group">
+                <a class="list-group-item" ui-sref="goDashboard">Dashboard</a>
+                <a href="#" class="list-group-item" ui-sref="goPedidos"> Mis pedidos <span class="badge"></span></a>
+                <a href="#" class="list-group-item" ui-sref="goFavoritos" disable> Mis favoritos <span class="badge"></span></a>
+                <a href="#" class="list-group-item active" ui-sref="goDatos " > Mis datos <span class="badge"></span></a>
+                <a href="#" class="list-group-item" ui-sref="goIndex"> Salir</a>
+            </div>
+        </aside> 
+            <div  class="thumbnail pull-left" width:100%; style="width:1200px; height:620px;">
+                <form>
+               <div class="col-xs-10">
+                    <label>Nombre:</label> <input  type="text" class="form-control" value="{{store.usuario.nombre}}" />
+               </div>
+               <div class="col-xs-10">
+                    <label >Email:</label> <input  type="email" class="form-control" value="{{store.usuario.email}}" />
+               </div>
+               <div class="col-xs-5">
+                    <label >Contraseña:</label> <input  type="text"  class="form-control" value="{{store.usuario.password}}" />
+               </div>
+               <div class="col-xs-5">
+                    <label >Confirmar contraseña:</label> <input  type="text" class="form-control" value="{{store.usuario.password}}" />
+               </div>
+               <div class="col-xs-8">
+                    <label >Direccion:</label> <input  type="text" class="form-control" value="{{store.usuario.direccion}}" />
+               </div>
+               <div class="col-xs-2">
+                    <label >CP:</label> <input  type="text" class="form-control " value="{{store.usuario.cp}}" />
+               </div>
+               <div class="col-xs-5">
+                    <label >Pais:</label> <input  type="text" class="form-control" value="{{store.usuario.pais}}" />
+               </div>
+               <div class="col-xs-5">
+                    <label >Ciudad:</label> 
+                   <select  class="form-control"    >
+                        <option value="{{store.usuario.ciudad}}" >{{store.usuario.ciudad}}</option>
+                   </select><br>
+                   <button class="btn btn-primary pull-right">Guardar</button>
+               </div>   
+           </form>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+                                                                                   
+    </body>
+<!-- Body End -->
+</html>
